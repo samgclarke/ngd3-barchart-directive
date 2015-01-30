@@ -11,6 +11,7 @@
       data: '=',
       yaxiskey: '@',
       xaxiskey: '@',
+      xaxistitle: "@"
       yaxistitle: "@"
     },
     link: function (scope, element) {
@@ -53,6 +54,11 @@
             .style({ 'stroke': 'Black', 'fill': 'none', 'stroke-width': '0.5px'})
             .attr("transform", "translate(0," + height + ")")
             .call(xAxis);
+          .append("text")
+            .style("text-anchor", "end")
+            .attr("x", width/2) // middle of x-xis
+            .attr("y", 30)
+            .text(scope.xaxistitle);
             
         // Y axis
         svg.append("g")
