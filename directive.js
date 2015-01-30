@@ -9,6 +9,7 @@
     restrict: 'E',
     scope: {
       data: '=',
+      yaxiskey: '@',
       yaxistitle: "@"
     },
     link: function (scope, element) {
