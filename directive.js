@@ -41,7 +41,7 @@
       // Render graph based on 'data'
       scope.render = function(data) {
         // Set our scale's domains
-        x.domain(data.map(function(d) { return d.month; }));
+        x.domain(data.map(function(d) { return d[scope.yaxiskey]; }));
         y.domain([d3.min(data, function(d) { return d.val; }), d3.max(data, function(d) { return d.val; })]);
         
         // Redraw the axes
@@ -69,7 +69,7 @@
         bars.enter()
           .append("rect")
           .attr("class", "bar")
-          .attr("x", function(d) { return x(d.month); })
+          .attr("x", function(d) { return x(d[scope.yaxiskey]); })
           .attr("width", x.rangeBand())
           .attr("fill", "orange");
 
