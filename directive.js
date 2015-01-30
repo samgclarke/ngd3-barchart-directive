@@ -56,7 +56,7 @@
             .call(xAxis);
           .append("text")
             .style("text-anchor", "end")
-            .attr("x", width/2) // middle of x-xis
+            .attr("x", width/2) // middle of x-axis
             .attr("y", 30)
             .text(scope.xaxistitle);
             
