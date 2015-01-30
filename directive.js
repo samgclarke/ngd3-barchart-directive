@@ -10,6 +10,7 @@
     scope: {
       data: '=',
       yaxiskey: '@',
+      xaxiskey: '@',
       yaxistitle: "@"
     },
     link: function (scope, element) {
@@ -42,7 +43,7 @@
       scope.render = function(data) {
         // Set our scale's domains
         x.domain(data.map(function(d) { return d[scope.yaxiskey]; }));
-        y.domain([d3.min(data, function(d) { return d.val; }), d3.max(data, function(d) { return d.val; })]);
+        y.domain([d3.min(data, function(d) { return d[scope.xaxiskey]; }), d3.max(data, function(d) { return d[scope.xaxiskey]; })]);
         
         // Redraw the axes
         svg.selectAll('g.axis').remove();
@@ -77,8 +78,8 @@
         bars
             .transition()
             .duration(1000)
-            .attr('height', function(d) { return height - y(d.val); })
-            .attr("y", function(d) { return y(d.val); })
+            .attr('height', function(d) { return height - y(d[scope.xaxiskey]); })
+            .attr("y", function(d) { return y(d[scope.xaxiskey]); })
       };
 
      // Watch 'data' and run scope.render(newVal) whenever it changes
